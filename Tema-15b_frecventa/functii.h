@@ -66,3 +66,129 @@ void afisareCifreCareNuApar(int v[], int dim) {
 	}
 	cout << endl;
 }
+void frecventaCifreAlNr(int nr) {
+	int f[10]{};
+	frecventaCifre(f, nr);
+	for (int i = 0; i < 10; i++) {
+		if (f[i] != 0) {
+			cout << i << " apare de " << f[i] << " ori." << endl;
+		}
+	}
+}
+void cifreCareAparMaiMultDeKOri(int nr, int k) {
+	int f[10]{};
+	frecventaCifre(f, nr);
+	cout << "Cifrele care apar mai mult de " << k << " ori:" << endl;
+	for (int i = 0; i < 10; i++) {
+		if (f[i] != 0) {
+			if (f[i] > k) {
+				cout << "Cifra " <<i << " care apare de " << f[i] << " ori." << endl;
+			}
+		}
+	}
+}
+int numarDinFrecventaSol5(int nr) {
+	int nrNou = 0;
+	int f[10]{};
+	frecventaCifre(f, nr);
+	for (int i = 0; i < 10; i++) {
+		if (i % 2 != 0 && f[i] == 0) {
+			nrNou = nrNou * 10 + i;
+		}
+	}
+	return nrNou;
+}
+int oglindit(int n) {
+	int ogl = 0;
+	while (n != 0) {
+		int cifra = n % 10;
+		ogl = ogl * 10 + cifra;
+		n = n / 10;
+	}
+	return ogl;
+}
+int numarDinFrecventaSol6(int nr) {
+	int nrNou = 0;
+	int f[10]{};
+	frecventaCifre(f, nr);
+	for (int i = 0; i < 10; i++) {
+		if (f[i] != 0 && f[i] >= 2) {
+			nrNou = nrNou * 10 + i;
+			nrNou = nrNou * 10 + i;
+		}
+		else if (f[i] != 0 && f[i] < 2) {
+			nrNou = nrNou * 10 + i;
+		}
+	}
+	int nrF = oglindit(nrNou);
+	return nrF;
+}
+int frecventaMax(int nr) {
+	int f[10]{};
+	frecventaCifre(f, nr);
+	int max = -1;
+	int cMax = 0;
+	for (int i = 0; i < 10; i++) {
+		if (f[i] != 0) {
+			cout << f[i] << endl;
+			if (f[i] > max) {
+				max = f[i];
+				cMax = i;
+			}
+		}
+	}
+	return cMax;
+}
+int rezolvareSol7(int nr) {
+	int nrn = 0;
+	int max = frecventaMax(nr);
+	int f[10]{};
+	frecventaCifre(f, nr);
+	for (int i = 0; i < 10; i++) {
+		int d = 0;
+		if (f[i] != 0) {
+			if (f[i] < max) {
+				d = max - i;
+				nrn = nrn + d;
+			}
+		}
+	}
+	return nrn;
+}
+bool nrPrim(int n) {
+	int nrdiv = 0;
+	for (int i = 1; i <= n; i++) {
+		if (n % i == 0) {
+			nrdiv++;
+		}
+	}
+	if (nrdiv == 2) {
+		return true;
+	}
+	else if (nrdiv != 2) {
+		return false;
+	}
+}
+void vectorNouSOol8(int nr, int v[], int& dim) {
+	dim = 0;
+	int f[10]{};
+	frecventaCifre(f, nr);
+	for (int i = 0; i < 10; i++) {
+		int d = 0;
+		if (f[i] == 0 && nrPrim(i) == true) {
+			v[dim] = i;
+			dim++;
+		}
+	}
+}
+int nrMinNouSol9(int nr) {
+	int nrNou = 0;
+	int f[10]{};
+	frecventaCifre(f, nr);
+	for (int i = 0; i < 10; i++) {
+		if (f[i] != 0) {
+			nrNou = nrNou * 10 + i;
+		}
+	}
+	return nrNou;
+}

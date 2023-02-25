@@ -142,6 +142,7 @@
     <ClCompile Include="Tema-15b_frecventa.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="corectare.h" />
     <ClInclude Include="functii.h" />
     <ClInclude Include="solutii.h" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 #include "solutii.h"
+#include "corectare.h"
 
 int main()
 {
@@ -8,7 +9,8 @@ int main()
 	//sol4();
 	//sol5();
 	//sol6();
-	//sol7(); //?
+	//sol7(); 
 	//sol8();
-	sol9();
+	//sol9();
+	cr7();
 }
